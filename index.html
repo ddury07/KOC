@@ -105,7 +105,7 @@
     input:focus, select:focus, textarea:focus {
       outline: none;
       border-color: var(--primary);
-      box-shadow: 0 0 0 3px rgba(26,54,93,0.15);
+      box-shadow: 0 0 0 3px rgba(234,29,45,0.2);
     }
     textarea {
       min-height: 110px;
@@ -160,7 +160,7 @@
     }
     .info-btn:hover,
     .info-btn:focus {
-      background: #2a4365;
+      background: #c41826;
       transform: scale(1.1);
       outline: none;
     }
@@ -262,7 +262,7 @@
       color: white;
     }
     button[type="submit"]:hover {
-      background: #2a4365;
+      background: #c41826;
     }
     button[type="submit"]:disabled {
       background: #a0aec0;
@@ -424,10 +424,18 @@
           <div class="checkbox-group" style="margin-top:0.5rem; flex-direction: column; align-items: flex-start; gap: 0.75rem;">
 
             <div class="role-option">
-              <label><input type="checkbox" name="trained" value="thurifer"> thurifer</label>
-              <button type="button" class="info-btn" aria-label="What is a thurifer?" title="What is a thurifer?">ⓘ</button>
+              <label><input type="checkbox" name="trained" value="acolyte"> acolyte</label>
+              <button type="button" class="info-btn" aria-label="What is an acolyte?" title="What is an acolyte?">ⓘ</button>
               <div class="tooltip" role="tooltip">
-                Carries the thurible (incense burner) and often the incense boat. Leads processions when incense is used, presents the thurible to the priest/bishop for imposing incense, and may incense the altar, gifts, or people.
+                General altar assistant who helps at the altar: preparing the vessels, presenting the water and wine, washing the celebrant’s hands, ringing the bells, and assisting with the sacred vessels. In some settings this is the primary “server” role.
+              </div>
+            </div>
+
+            <div class="role-option">
+              <label><input type="checkbox" name="trained" value="candle bearer"> candle bearer</label>
+              <button type="button" class="info-btn" aria-label="What is a candle bearer?" title="What is a candle bearer?">ⓘ</button>
+              <div class="tooltip" role="tooltip">
+                Carries a lighted processional candle, usually flanking the crucifer in the entrance and exit processions and accompanying the Gospel procession. May also assist with other sanctuary duties.
               </div>
             </div>
 
@@ -448,18 +456,10 @@
             </div>
 
             <div class="role-option">
-              <label><input type="checkbox" name="trained" value="candle bearer"> candle bearer</label>
-              <button type="button" class="info-btn" aria-label="What is a candle bearer?" title="What is a candle bearer?">ⓘ</button>
+              <label><input type="checkbox" name="trained" value="thurifer"> thurifer</label>
+              <button type="button" class="info-btn" aria-label="What is a thurifer?" title="What is a thurifer?">ⓘ</button>
               <div class="tooltip" role="tooltip">
-                Carries a lighted processional candle, usually flanking the crucifer in the entrance and exit processions and accompanying the Gospel procession. May also assist with other sanctuary duties.
-              </div>
-            </div>
-
-            <div class="role-option">
-              <label><input type="checkbox" name="trained" value="acolyte"> acolyte</label>
-              <button type="button" class="info-btn" aria-label="What is an acolyte?" title="What is an acolyte?">ⓘ</button>
-              <div class="tooltip" role="tooltip">
-                General altar assistant who helps at the altar: preparing the vessels, presenting the water and wine, washing the celebrant’s hands, ringing the bells, and assisting with the sacred vessels. In some settings this is the primary “server” role.
+                Carries the thurible (incense burner) and often the incense boat. Leads processions when incense is used, presents the thurible to the priest/bishop for imposing incense, and may incense the altar, gifts, or people.
               </div>
             </div>
 
@@ -555,7 +555,7 @@
     // ============================================================
     // CONFIGURATION – REPLACE THIS URL AFTER YOU SET UP THE SHEET
     // ============================================================
-    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyMGPVAylTwO08tvtvA4r907V_2lmuBbBlkVsp7C1kWewXUF_5oORFHbInCVUdsIf5JZg/exec";
+    const SCRIPT_URL = "PASTE_YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL_HERE";
 
     // Auto-fill today's date on the signature fields + mobile-friendly tooltips
     document.addEventListener("DOMContentLoaded", () => {
