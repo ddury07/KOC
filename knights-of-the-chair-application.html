@@ -173,5 +173,365 @@
       margin-top: 1.5rem;
     }
     button {
-      padding
-... 
+      padding: 0.75rem 1.75rem;
+      font-size: 1rem;
+      font-weight: 600;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.15s, transform 0.1s;
+    }
+    button[type="submit"] {
+      background: var(--primary);
+      color: white;
+    }
+    button[type="submit"]:hover {
+      background: #2a4365;
+    }
+    button[type="submit"]:disabled {
+      background: #a0aec0;
+      cursor: not-allowed;
+    }
+    button[type="reset"] {
+      background: #edf2f7;
+      color: var(--text);
+    }
+    button[type="reset"]:hover {
+      background: #e2e8f0;
+    }
+    .status {
+      margin-top: 1.25rem;
+      padding: 1rem;
+      border-radius: 6px;
+      display: none;
+      font-size: 0.95rem;
+    }
+    .status.success {
+      background: #f0fff4;
+      border: 1px solid #9ae6b4;
+      color: #276749;
+      display: block;
+    }
+    .status.error {
+      background: #fff5f5;
+      border: 1px solid #feb2b2;
+      color: #c53030;
+      display: block;
+    }
+    footer {
+      text-align: center;
+      padding: 1rem;
+      font-size: 0.8rem;
+      color: var(--muted);
+      border-top: 1px solid var(--border);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>KNIGHTS OF THE CHAIR</h1>
+      <div class="subtitle">Application Form</div>
+      <div class="org">Saint Joseph Cathedral · Diocese of Columbus</div>
+    </header>
+
+    <form id="applicationForm" novalidate>
+      <!-- Personal Information -->
+      <div class="section">
+        <div class="section-title">Personal Information</div>
+        <div class="grid grid-3">
+          <div>
+            <label class="required" for="lastName">Last Name</label>
+            <input type="text" id="lastName" name="lastName" required>
+          </div>
+          <div>
+            <label class="required" for="firstName">First Name</label>
+            <input type="text" id="firstName" name="firstName" required>
+          </div>
+          <div>
+            <label for="middleName">Middle Name</label>
+            <input type="text" id="middleName" name="middleName">
+          </div>
+        </div>
+        <div style="margin-top:1rem">
+          <label class="required" for="streetAddress">Street Address</label>
+          <input type="text" id="streetAddress" name="streetAddress" required>
+        </div>
+        <div class="grid grid-3" style="margin-top:1rem">
+          <div>
+            <label class="required" for="city">City</label>
+            <input type="text" id="city" name="city" required>
+          </div>
+          <div>
+            <label class="required" for="state">State</label>
+            <input type="text" id="state" name="state" required maxlength="2" placeholder="OH">
+          </div>
+          <div>
+            <label class="required" for="zip">Zip</label>
+            <input type="text" id="zip" name="zip" required pattern="[0-9]{5}(-[0-9]{4})?">
+          </div>
+        </div>
+        <div class="grid grid-2" style="margin-top:1rem">
+          <div>
+            <label class="required" for="phone">Phone</label>
+            <input type="tel" id="phone" name="phone" required>
+          </div>
+          <div>
+            <label class="required" for="email">Email Address (non-school)</label>
+            <input type="email" id="email" name="email" required>
+          </div>
+        </div>
+        <div class="grid grid-2" style="margin-top:1rem">
+          <div>
+            <label class="required" for="grade">Grade</label>
+            <select id="grade" name="grade" required>
+              <option value="">Select grade</option>
+              <option value="9">9</option>
+              <option value="10">10</option>
+              <option value="11">11</option>
+              <option value="12">12</option>
+            </select>
+          </div>
+          <div>
+            <label class="required" for="dob">Date of Birth</label>
+            <input type="date" id="dob" name="dob" required>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sacramental History -->
+      <div class="section">
+        <div class="section-title">Sacramental History</div>
+        <div class="grid grid-2">
+          <div>
+            <label class="required" for="baptismYear">Year of Baptism</label>
+            <input type="number" id="baptismYear" name="baptismYear" min="1990" max="2020" required>
+          </div>
+          <div>
+            <label class="required">Are you a convert to Catholicism?</label>
+            <div class="radio-group">
+              <label><input type="radio" name="convert" value="Yes" required> Yes</label>
+              <label><input type="radio" name="convert" value="No"> No</label>
+            </div>
+          </div>
+        </div>
+        <div style="margin-top:1rem">
+          <label for="conversionYear">Year of Conversion (if applicable)</label>
+          <input type="number" id="conversionYear" name="conversionYear" min="1990" max="2026">
+        </div>
+        <div style="margin-top:1rem">
+          <label class="required">Have you received the Sacrament of Confirmation in the Catholic Church?</label>
+          <div class="radio-group">
+            <label><input type="radio" name="confirmed" value="Yes" required> Yes</label>
+            <label><input type="radio" name="confirmed" value="No"> No</label>
+          </div>
+        </div>
+      </div>
+
+      <!-- Altar Server Experience -->
+      <div class="section">
+        <div class="section-title">Altar Server Experience</div>
+        <div>
+          <label class="required">Have you been an altar server in the past?</label>
+          <div class="radio-group">
+            <label><input type="radio" name="altarServer" value="Yes" required> Yes</label>
+            <label><input type="radio" name="altarServer" value="No"> No</label>
+          </div>
+        </div>
+        <div style="margin-top:1rem">
+          <label for="parishes">At which parish(es) have you served?</label>
+          <input type="text" id="parishes" name="parishes" placeholder="e.g., St. Joseph Cathedral, St. Mary of the Springs">
+        </div>
+        <div style="margin-top:1.25rem">
+          <label>For which of the following are you trained? (check all that apply)</label>
+          <div class="checkbox-group" style="margin-top:0.5rem">
+            <label><input type="checkbox" name="trained" value="thurifer"> thurifer</label>
+            <label><input type="checkbox" name="trained" value="crucifer"> crucifer</label>
+            <label><input type="checkbox" name="trained" value="Missal bearer"> Missal bearer</label>
+            <label><input type="checkbox" name="trained" value="candle bearer"> candle bearer</label>
+            <label><input type="checkbox" name="trained" value="acolyte"> acolyte</label>
+            <label><input type="checkbox" name="trained" value="crozier/miter bearer"> crozier/miter bearer</label>
+          </div>
+        </div>
+      </div>
+
+      <!-- Motivation -->
+      <div class="section">
+        <div class="section-title">Motivation</div>
+        <label class="required" for="whyJoin">Why do you want to become a member of the Knights of the Chair?</label>
+        <textarea id="whyJoin" name="whyJoin" required placeholder="Please share your reasons..."></textarea>
+      </div>
+
+      <!-- Requirements -->
+      <div class="section">
+        <div class="section-title">Requirements and Responsibilities</div>
+        <div class="requirements">
+          <ol>
+            <li>The applicant must be a practicing Catholic male student at St. Charles Preparatory School.</li>
+            <li>The applicant understands that the Knights of the Chair are specially selected to serve at Liturgies for the Bishop of Columbus. While this is a position of honor, the server must exhibit modesty in speech when discussing this service with others.</li>
+            <li>The applicant must be striving to be docile, humble, and disciplined in the life of Christian virtue.</li>
+            <li>The applicant must possess a friendly and brotherly attitude.</li>
+            <li>The applicant must be willing to help his peers to serve well at the Altar.</li>
+            <li>The applicant must be generous with his time to serve the Bishop at Saint Joseph Cathedral for particular Masses. (Time commitments will vary with the availability of each Knight, with the minimum of serving one or two Masses per month. There is no expectation that a student will miss classes.)</li>
+            <li>Transportation to the Cathedral is to be arranged by each Knight for himself.</li>
+            <li>The applicant must be committed to attend Knights of the Chair meetings, training sessions, rehearsals, and other occasional events and to serve at Masses on a rotational basis.</li>
+          </ol>
+        </div>
+
+        <div class="agreement">
+          <label>
+            <input type="checkbox" id="applicantAgree" name="applicantAgree" required>
+            <span>I have read and understood all the above requirements and responsibilities and I agree to fulfill them to the utmost of my ability. I understand that it is not necessary to possess prior experience as an altar server and am willing to be trained. I further understand that failure to maintain can result in dismissal from the Knights at the discretion of the Director of Divine Worship for the Diocese of Columbus and his St. Charles Prep faculty assistants.</span>
+          </label>
+        </div>
+
+        <div class="grid grid-2">
+          <div>
+            <label class="required" for="applicantName">Applicant Full Name (electronic signature)</label>
+            <input type="text" id="applicantName" name="applicantName" required>
+          </div>
+          <div>
+            <label class="required" for="applicantDate">Date</label>
+            <input type="date" id="applicantDate" name="applicantDate" required>
+          </div>
+        </div>
+      </div>
+
+      <!-- Parent Permission -->
+      <div class="section">
+        <div class="section-title">Parents’ Permission</div>
+        <div class="agreement">
+          <label>
+            <input type="checkbox" id="parentAgree" name="parentAgree" required>
+            <span>I understand that my son is applying to be a member of the Knights of the Chair in order to serve the Bishop of Columbus at Saint Joseph Cathedral and other possible special events. I have read the requirements and responsibilities above. I recognize the time commitment required on his part. I give permission for him to apply and be part of the Knights of the Chair and will support him in carrying out his responsibilities.</span>
+          </label>
+        </div>
+        <div class="grid grid-2">
+          <div>
+            <label class="required" for="parentName">Parent/Guardian Full Name (electronic signature)</label>
+            <input type="text" id="parentName" name="parentName" required>
+          </div>
+          <div>
+            <label class="required" for="parentDate">Date</label>
+            <input type="date" id="parentDate" name="parentDate" required>
+          </div>
+        </div>
+      </div>
+
+      <div class="btn-row">
+        <button type="reset">Clear Form</button>
+        <button type="submit" id="submitBtn">Submit Application</button>
+      </div>
+
+      <div id="statusMsg" class="status"></div>
+    </form>
+
+    <footer>
+      Saint Joseph Cathedral · Diocese of Columbus · Knights of the Chair
+    </footer>
+  </div>
+
+  <script>
+    // ============================================================
+    // CONFIGURATION – REPLACE THIS URL AFTER YOU SET UP THE SHEET
+    // ============================================================
+    const SCRIPT_URL = "PASTE_YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL_HERE";
+
+    // Auto-fill today's date on the signature fields
+    document.addEventListener("DOMContentLoaded", () => {
+      const today = new Date().toISOString().split("T")[0];
+      document.getElementById("applicantDate").value = today;
+      document.getElementById("parentDate").value = today;
+    });
+
+    const form = document.getElementById("applicationForm");
+    const statusMsg = document.getElementById("statusMsg");
+    const submitBtn = document.getElementById("submitBtn");
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+
+      if (!form.checkValidity()) {
+        form.reportValidity();
+        return;
+      }
+
+      // Collect trained roles
+      const trained = Array.from(document.querySelectorAll('input[name="trained"]:checked'))
+        .map(cb => cb.value)
+        .join(", ");
+
+      const data = {
+        timestamp: new Date().toISOString(),
+        lastName: form.lastName.value.trim(),
+        firstName: form.firstName.value.trim(),
+        middleName: form.middleName.value.trim(),
+        streetAddress: form.streetAddress.value.trim(),
+        city: form.city.value.trim(),
+        state: form.state.value.trim().toUpperCase(),
+        zip: form.zip.value.trim(),
+        phone: form.phone.value.trim(),
+        email: form.email.value.trim(),
+        grade: form.grade.value,
+        dob: form.dob.value,
+        baptismYear: form.baptismYear.value,
+        convert: form.convert.value,
+        conversionYear: form.conversionYear.value || "",
+        confirmed: form.confirmed.value,
+        altarServer: form.altarServer.value,
+        parishes: form.parishes.value.trim(),
+        trained: trained,
+        whyJoin: form.whyJoin.value.trim(),
+        applicantName: form.applicantName.value.trim(),
+        applicantDate: form.applicantDate.value,
+        parentName: form.parentName.value.trim(),
+        parentDate: form.parentDate.value
+      };
+
+      // Safety check – user must replace the placeholder URL
+      if (SCRIPT_URL.includes("PASTE_YOUR_GOOGLE_APPS_SCRIPT")) {
+        statusMsg.className = "status error";
+        statusMsg.innerHTML = `
+          <strong>Setup required</strong><br>
+          The form is ready, but you still need to connect it to a Google Spreadsheet.<br>
+          Follow the instructions in the README (or the message below the form) to create the Google Apps Script and paste the Web App URL into the form’s JavaScript.
+        `;
+        return;
+      }
+
+      submitBtn.disabled = true;
+      submitBtn.textContent = "Submitting…";
+
+      try {
+        const response = await fetch(SCRIPT_URL, {
+          method: "POST",
+          mode: "no-cors",          // required for simple Google Apps Script web apps
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(data)
+        });
+
+        // With no-cors we cannot read the response, so we assume success
+        statusMsg.className = "status success";
+        statusMsg.innerHTML = `
+          <strong>Application submitted successfully!</strong><br>
+          Thank you. Your information has been recorded. Someone from the Knights of the Chair will be in touch.
+        `;
+        form.reset();
+        // re-fill dates after reset
+        const today = new Date().toISOString().split("T")[0];
+        document.getElementById("applicantDate").value = today;
+        document.getElementById("parentDate").value = today;
+      } catch (err) {
+        statusMsg.className = "status error";
+        statusMsg.innerHTML = `
+          <strong>Submission failed</strong><br>
+          Please try again or contact the Director of Divine Worship. Error: ${err.message}
+        `;
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.textContent = "Submit Application";
+      }
+    });
+  </script>
+</body>
+</html>
