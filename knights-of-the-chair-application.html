@@ -129,6 +129,82 @@
       width: auto;
       margin: 0;
     }
+
+    /* Role info tooltips */
+    .role-option {
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+      position: relative;
+    }
+    .role-option label {
+      margin-bottom: 0;
+    }
+    .info-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: var(--primary);
+      color: white;
+      font-size: 0.7rem;
+      font-weight: 700;
+      cursor: pointer;
+      border: none;
+      padding: 0;
+      line-height: 1;
+      flex-shrink: 0;
+      transition: background 0.15s, transform 0.1s;
+    }
+    .info-btn:hover,
+    .info-btn:focus {
+      background: #2a4365;
+      transform: scale(1.1);
+      outline: none;
+    }
+    .tooltip {
+      display: none;
+      position: absolute;
+      left: 0;
+      bottom: calc(100% + 8px);
+      width: 260px;
+      max-width: 90vw;
+      background: #1a202c;
+      color: #f7fafc;
+      font-size: 0.8rem;
+      font-weight: 400;
+      line-height: 1.4;
+      padding: 0.75rem 0.9rem;
+      border-radius: 8px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.25);
+      z-index: 50;
+      pointer-events: none;
+    }
+    .tooltip::after {
+      content: "";
+      position: absolute;
+      top: 100%;
+      left: 16px;
+      border: 6px solid transparent;
+      border-top-color: #1a202c;
+    }
+    .role-option:hover .tooltip,
+    .role-option:focus-within .tooltip,
+    .info-btn:focus + .tooltip,
+    .tooltip.show {
+      display: block;
+    }
+    @media (max-width: 480px) {
+      .tooltip {
+        width: 220px;
+        left: -40px;
+      }
+      .tooltip::after {
+        left: 56px;
+      }
+    }
     .hint {
       font-size: 0.8rem;
       color: var(--muted);
@@ -344,13 +420,57 @@
         </div>
         <div style="margin-top:1.25rem">
           <label>For which of the following are you trained? (check all that apply)</label>
-          <div class="checkbox-group" style="margin-top:0.5rem">
-            <label><input type="checkbox" name="trained" value="thurifer"> thurifer</label>
-            <label><input type="checkbox" name="trained" value="crucifer"> crucifer</label>
-            <label><input type="checkbox" name="trained" value="Missal bearer"> Missal bearer</label>
-            <label><input type="checkbox" name="trained" value="candle bearer"> candle bearer</label>
-            <label><input type="checkbox" name="trained" value="acolyte"> acolyte</label>
-            <label><input type="checkbox" name="trained" value="crozier/miter bearer"> crozier/miter bearer</label>
+          <p class="hint" style="margin-bottom:0.6rem">Tap or hover the <strong>ⓘ</strong> next to each role for a short explanation.</p>
+          <div class="checkbox-group" style="margin-top:0.5rem; flex-direction: column; align-items: flex-start; gap: 0.75rem;">
+
+            <div class="role-option">
+              <label><input type="checkbox" name="trained" value="thurifer"> thurifer</label>
+              <button type="button" class="info-btn" aria-label="What is a thurifer?" title="What is a thurifer?">ⓘ</button>
+              <div class="tooltip" role="tooltip">
+                Carries the thurible (incense burner) and often the incense boat. Leads processions when incense is used, presents the thurible to the priest/bishop for imposing incense, and may incense the altar, gifts, or people.
+              </div>
+            </div>
+
+            <div class="role-option">
+              <label><input type="checkbox" name="trained" value="crucifer"> crucifer</label>
+              <button type="button" class="info-btn" aria-label="What is a crucifer?" title="What is a crucifer?">ⓘ</button>
+              <div class="tooltip" role="tooltip">
+                Carries the processional cross (crucifix) at the head of the entrance and exit processions (or immediately behind the thurifer when incense is used). Often also serves as book-bearer at certain moments.
+              </div>
+            </div>
+
+            <div class="role-option">
+              <label><input type="checkbox" name="trained" value="Missal bearer"> Missal bearer</label>
+              <button type="button" class="info-btn" aria-label="What is a Missal bearer?" title="What is a Missal bearer?">ⓘ</button>
+              <div class="tooltip" role="tooltip">
+                Holds the Roman Missal (or Book of the Chair) open for the bishop or priest so he can proclaim the presidential prayers with both hands free. Also moves the book between the chair and the altar as needed.
+              </div>
+            </div>
+
+            <div class="role-option">
+              <label><input type="checkbox" name="trained" value="candle bearer"> candle bearer</label>
+              <button type="button" class="info-btn" aria-label="What is a candle bearer?" title="What is a candle bearer?">ⓘ</button>
+              <div class="tooltip" role="tooltip">
+                Carries a lighted processional candle, usually flanking the crucifer in the entrance and exit processions and accompanying the Gospel procession. May also assist with other sanctuary duties.
+              </div>
+            </div>
+
+            <div class="role-option">
+              <label><input type="checkbox" name="trained" value="acolyte"> acolyte</label>
+              <button type="button" class="info-btn" aria-label="What is an acolyte?" title="What is an acolyte?">ⓘ</button>
+              <div class="tooltip" role="tooltip">
+                General altar assistant who helps at the altar: preparing the vessels, presenting the water and wine, washing the celebrant’s hands, ringing the bells, and assisting with the sacred vessels. In some settings this is the primary “server” role.
+              </div>
+            </div>
+
+            <div class="role-option">
+              <label><input type="checkbox" name="trained" value="crozier/miter bearer"> crozier/miter bearer</label>
+              <button type="button" class="info-btn" aria-label="What is a crozier/miter bearer?" title="What is a crozier/miter bearer?">ⓘ</button>
+              <div class="tooltip" role="tooltip">
+                Holds the bishop’s crozier (pastoral staff) and/or miter (pointed hat) when the bishop is not wearing or carrying them. Often wears a vimpa (veil) so the insignia are not touched with bare hands. These roles are used only when a bishop is present.
+              </div>
+            </div>
+
           </div>
         </div>
       </div>
@@ -435,13 +555,30 @@
     // ============================================================
     // CONFIGURATION – REPLACE THIS URL AFTER YOU SET UP THE SHEET
     // ============================================================
-    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyMGPVAylTwO08tvtvA4r907V_2lmuBbBlkVsp7C1kWewXUF_5oORFHbInCVUdsIf5JZg/exec";
+    const SCRIPT_URL = "PASTE_YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL_HERE";
 
-    // Auto-fill today's date on the signature fields
+    // Auto-fill today's date on the signature fields + mobile-friendly tooltips
     document.addEventListener("DOMContentLoaded", () => {
       const today = new Date().toISOString().split("T")[0];
       document.getElementById("applicantDate").value = today;
       document.getElementById("parentDate").value = today;
+
+      // Mobile / touch: tap ⓘ to toggle tooltip
+      document.querySelectorAll(".info-btn").forEach(btn => {
+        btn.addEventListener("click", (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          const tooltip = btn.nextElementSibling;
+          const isOpen = tooltip.classList.contains("show");
+          // close all others first
+          document.querySelectorAll(".tooltip.show").forEach(t => t.classList.remove("show"));
+          if (!isOpen) tooltip.classList.add("show");
+        });
+      });
+      // Close tooltips when tapping elsewhere
+      document.addEventListener("click", () => {
+        document.querySelectorAll(".tooltip.show").forEach(t => t.classList.remove("show"));
+      });
     });
 
     const form = document.getElementById("applicationForm");
